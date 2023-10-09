@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- add ventas tree model-->
+    <record id="view_ventas_tree" model="ir.ui.view">
+        <field name="name">ventas.tree</field>
+        <field name="model">ventas_cole.ventas</field>
+        <field name="arch" type="xml">
+            <tree string="Ventas">
+                <field name="name"/>
+                <field name="fecha"/>
+                <field name="cliente"/>
+                <field name="cantidad"/>
+                <field name="precio"/>
+                <field name="total"/>
+            </tree>
+        </field>
+    </record>
+    <!-- add ventas form model-->
+    <record id="view_ventas_form" model="ir.ui.view">
+        <field name="name">ventas.form</field>
+        <field name="model">ventas_cole.ventas</field>
+        <field name="arch" type="xml">
+            <form string="Ventas">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="fecha"/>
+                        <field name="cliente"/>
+                        <field name="cantidad"/>
+                        <field name="precio"/>
+                        <field name="total"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- menu tree esto nos añade el acceso directo, todo esto se tranforma en una fila de la base de datos de la tabla actions.act_window-->
+    <record id="action_ventas_tree" model="ir.actions.act_window">
+        <field name="name">Ventas</field>
+        <field name="res_model">ventas_cole.ventas</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- menu form-->
+    <record id="action_ventas_form" model="ir.actions.act_window">
+        <field name="name">Ventas</field>
+        <field name="res_model">ventas_cole.ventas</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <!-- menu item-->
+    <menuitem id="menu_ventas" name="Ventas"/>
+    <menuitem id="menu_ventas_tree" name="Ventas" parent="menu_ventas" action="action_ventas_tree"/>
+    <menuitem id="menu_ventas_form" name="Ventas" parent="menu_ventas" action="action_ventas_form"/>
+    
+
+</odoo>
+
