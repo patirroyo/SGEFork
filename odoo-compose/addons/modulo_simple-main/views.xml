@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="cliente_action" model="ir.actions.act_window">
+		<field name="name">Action cliente</field>
+		<field name="res_model">salesianos.cliente</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+
+	<record id="cliente_form" model="ir.ui.view" >
+		<field name="name">field_value</field>
+		<field name="model">salesianos.cliente</field>
+		
+		<field name="arch" type="html">
+			<form string="cliente">
+				<field name="name"/>
+				<field name="email"/>
+				<field name="phone"/>
+			</form>
+		</field>
+	</record>
+	<!--Definir los menuitems al final-->
+	<menuitem
+		id="compras"
+		name="compras"
+		sequence="10"/>
+	<menuitem
+		id="cliente"
+		name="cliente"
+		action="cliente_action"
+		parent="compras"
+		sequence="10"/>
+
+</odoo>
