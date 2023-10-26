@@ -18,6 +18,16 @@ class Cliente(models.Model):
                 raise models.ValidationError('El cliente ' + record.name + ' no puede tener mas de 100 años')
             else:
                 pass
+    altura = fields.Float()
+    peso = fields.Float()
+    imc = fields.Float(compute='_compute_imc', store=True) # el campo imc es calculado y se almacena en la base de datos
+    @api.depends('peso', 'altura') # dependencias del campo imc
+    def _compute_imc(self):
+        for record in self:
+            if record.altura > 0 and record.peso > 0:
+                record.imc = record.peso / record.altura ** 2
+            else:
+                record.imc = 0
 
     
 

@@ -59,4 +59,10 @@ TestsResultsCache.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/salesforce
 
+# Ignore pycache
+**/__pycache__/*
+
+
+
+
 salesforce/Ahorcado/.sf
