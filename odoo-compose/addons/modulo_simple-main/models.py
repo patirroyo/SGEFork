@@ -28,8 +28,14 @@ class Cliente(models.Model):
                 record.imc = record.peso / record.altura ** 2
             else:
                 record.imc = 0
+    proveedor = fields.Many2many(comodel_name='salesianos.proveedor', string='proveedor')
 
-    
+class Proveedor(models.Model):
+    _name = 'salesianos.proveedor'
+    name = fields.Char(required=True)
+    cif = fields.Char(required=True)
+    titular = fields.Char()
+    #cliente = fields.Many2many(comodel_name='salesianos.cliente', string='cliente')
 
 class Vendedor(models.Model):
     _name = 'salesianos.vendedor'
@@ -38,3 +44,5 @@ class Vendedor(models.Model):
     fecha_incorporacion = fields.Date()
     fecha_despido = fields.Date()
     cliente = fields.One2many(comodel_name='salesianos.cliente', inverse_name='vendedor') # relacion con el modelo cliente, inverse_name es el campo que se relaciona con el modelo cliente (vendedor en este caso) y comodel_name es el modelo con el que se relaciona (cliente en este caso)
+
+

@@ -13,6 +13,12 @@
 		<field name="view_mode">tree,form,calendar</field>
 	</record>
 
+	<record id="proveedor_action" model="ir.actions.act_window">
+		<field name="name">Action proveedor</field>
+		<field name="res_model">salesianos.proveedor</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
 	<record id="view_cliente_tree" model="ir.ui.view" >
 		<field name="name">cliente.tree</field>
 		<field name="model">salesianos.cliente</field>
@@ -25,6 +31,29 @@
 				<field name="altura"/>
 				<field name="peso"/>
 				<field name="imc"/>
+			</tree>
+		</field>
+	</record>
+	<record id="view_vendedor_tree" model="ir.ui.view" >
+		<field name="name">vendedor.tree</field>
+		<field name="model">salesianos.vendedor</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="company"/>
+				<field name="fecha_incorporacion"/>
+				<field name="fecha_despido"/>
+			</tree>
+		</field>
+	</record>
+	<record id="view_proveedor_tree" model="ir.ui.view" >
+		<field name="name">proveedor.tree</field>
+		<field name="model">salesianos.proveedor</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="cif"/>
+				<field name="titular"/>
 			</tree>
 		</field>
 	</record>
@@ -93,11 +122,16 @@
 		action="cliente_action"
 		parent="compras"
 		sequence="10"/>
-
 	<menuitem
 		id="vendedor"
 		name="vendedor"
 		action="vendedor_action"
+		parent="compras"
+		sequence="10"/>
+	<menuitem
+		id="proveedor"
+		name="proveedor"
+		action="proveedor_action"
 		parent="compras"
 		sequence="10"/>
 
