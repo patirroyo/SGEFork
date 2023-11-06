@@ -35,7 +35,7 @@ class Proveedor(models.Model):
     name = fields.Char(required=True)
     cif = fields.Char(required=True)
     titular = fields.Char()
-    #cliente = fields.Many2many(comodel_name='salesianos.cliente', string='cliente')
+    tipo = fields.Selection(selection=[('interno', 'ProvInterno'), ('externo', 'ProvExterno')], required=True)
 
 class Vendedor(models.Model):
     _name = 'salesianos.vendedor'
@@ -45,4 +45,7 @@ class Vendedor(models.Model):
     fecha_despido = fields.Date()
     cliente = fields.One2many(comodel_name='salesianos.cliente', inverse_name='vendedor') # relacion con el modelo cliente, inverse_name es el campo que se relaciona con el modelo cliente (vendedor en este caso) y comodel_name es el modelo con el que se relaciona (cliente en este caso)
 
-
+class Base(models.Model):
+    _name = 'salesianos.base'
+    name = fields.Char(required=True)
+    color = fields.Selection(selection=[('red', 'Rojo'), ('green', 'Verde'), ('blue', 'Azul')], required=True)

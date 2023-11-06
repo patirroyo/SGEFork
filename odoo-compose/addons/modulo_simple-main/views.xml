@@ -18,6 +18,11 @@
 		<field name="res_model">salesianos.proveedor</field>
 		<field name="view_mode">tree,form</field>
 	</record>
+	<record id="base_action" model="ir.actions.act_window">
+		<field name="name">Action Base</field>
+		<field name="res_model">salesianos.base</field>
+		<field name="view_mode">tree,form</field>
+	</record>
 
 	<record id="view_cliente_tree" model="ir.ui.view" >
 		<field name="name">cliente.tree</field>
@@ -55,6 +60,8 @@
 				<field name="name"/>
 				<field name="cif"/>
 				<field name="titular"/>
+				<field name="tipo"/>
+
 			</tree>
 		</field>
 	</record>
@@ -110,6 +117,21 @@
 			</search>
 		</field>
 	</record>
+	<record id="view_base_tree" model="ir.ui.view" >
+		<field name="name">field_value</field>
+		<field name="model">salesianos.base</field>
+		
+		<field name="arch" type="xml">
+			<form string="cliente">
+				<sheet>
+					<group>
+						<field name="name"/>
+						<field name="color"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
 
 	
 
@@ -134,6 +156,12 @@
 		id="proveedor"
 		name="proveedor"
 		action="proveedor_action"
+		parent="compras"
+		sequence="10"/>
+	<menuitem
+		id="base"
+		name="base"
+		action="base_action"
 		parent="compras"
 		sequence="10"/>
 
