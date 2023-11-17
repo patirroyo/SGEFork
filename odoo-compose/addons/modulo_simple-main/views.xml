@@ -23,6 +23,11 @@
 		<field name="res_model">salesianos.base</field>
 		<field name="view_mode">tree,form</field>
 	</record>
+	<record id="colorblind_action" model="ir.actions.act_window">
+		<field name="name">Action colorblind</field>
+		<field name="res_model">salesianos.colorblind</field>
+		<field name="view_mode">tree,form</field>
+	</record>
 
 	<record id="view_cliente_tree" model="ir.ui.view" >
 		<field name="name">cliente.tree</field>
@@ -67,7 +72,7 @@
 	</record>
 
 	<record id="cliente_form" model="ir.ui.view" >
-		<field name="name">field_value</field>
+		<field name="name">cliente.form</field>
 		<field name="model">salesianos.cliente</field>
 		
 		<field name="arch" type="xml">
@@ -89,7 +94,7 @@
 	</record>
 
 	<record id="vendedor_calendar" model="ir.ui.view" >
-		<field name="name">field_value</field>
+		<field name="name">vendedor.calendar</field>
 		<field name="model">salesianos.vendedor</field>
 		<field name="arch" type="xml">
 			<calendar string="vendedor" date_start="fecha_incorporacion" date_stop="fecha_despido">
@@ -117,22 +122,47 @@
 			</search>
 		</field>
 	</record>
+
 	<record id="view_base_tree" model="ir.ui.view" >
-		<field name="name">field_value</field>
+		<field name="name">base.tree</field>
 		<field name="model">salesianos.base</field>
-		
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="color"/>
+				<field name="color_cmyk"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_base_form" model="ir.ui.view" >
+		<field name="name">base.form</field>
+		<field name="model">salesianos.base</field>
 		<field name="arch" type="xml">
 			<form string="cliente">
 				<sheet>
 					<group>
 						<field name="name"/>
 						<field name="color"/>
+						<field name="color_cmyk"/>
 					</group>
 				</sheet>
 			</form>
 		</field>
 	</record>
-
+	<record id="view_colorblind_tree" model="ir.ui.view" >
+		<field name="name">colorblind.tree</field>
+		<field name="model">salesianos.colorblind</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="color"/>
+				<field name="color_cmyk"/>
+				<field name="color_blind"/>
+			</tree>
+		</field>
+	</record>
+	
 	
 
 	<!--Definir los menuitems al final-->
@@ -162,6 +192,12 @@
 		id="base"
 		name="base"
 		action="base_action"
+		parent="compras"
+		sequence="10"/>
+	<menuitem
+		id="colorblind"
+		name="colorblind"
+		action="colorblind_action"
 		parent="compras"
 		sequence="10"/>
 

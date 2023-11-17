@@ -48,4 +48,22 @@ class Vendedor(models.Model):
 class Base(models.Model):
     _name = 'salesianos.base'
     name = fields.Char(required=True)
-    color = fields.Selection(selection=[('red', 'Rojo'), ('green', 'Verde'), ('blue', 'Azul')], required=True)
+    color = fields.Selection(selection=[('red', 'Color Rojo'), ('green', 'Color Verde'), ('blue', 'Color Azul')], required=True, string='Color RGB')
+
+class CMYK(models.Model):
+    #do not generate a table for this table in the database
+    _inherit = 'salesianos.base'
+    color_cmyk = fields.Selection(selection=[
+        ('cyan', 'Color Cyan'), 
+        ('magenta', 'Color Magenta'), 
+        ('yellow', 'Color Yellow'), 
+        ('black', 'Color Black')], required=True, string='Color CMYK')
+
+class ColorBlind(models.Model):
+    _inherit = 'salesianos.base'
+    #generate a table for this table in the database, _name is the key
+    _name = 'salesianos.colorblind'
+    color_blind = fields.Selection(selection=[
+        ('brown', 'Color Brown'),
+        ('purple', 'Color Purple'),
+        ('orange', 'Color Orange')], required=True, string='Color Blind')
